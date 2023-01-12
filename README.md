@@ -7,13 +7,11 @@ efs-csi-provisioner automation script to easily create EFS and deploy efs csi on
 
 
 ### Create AWS IAM Policy AmazonEKS_EFS_CSI_Driver_Policy
-    aws iam create-policy \
-        --policy-name AmazonEKS_EFS_CSI_Driver_Policy \
-        --policy-document file://iam-policy-template.json
+        ./deploy.sh --action <create_role> --region <region> --cluster-name <cluster-name>
 
 ### Create AWS EFS using terraform script
-    cd efs
-    bash provision.sh --action create \ 
-    --efs-name your-efs --vpc-id vpc-XXXXXXX \
-    --region your-region
+        ./deploy.sh --action <create_efs|delete_efs> --efs-name <name> --vpc-id <vpc-xxxxx> --region <region> --throughput <in mbps, Only of --throughput is provisioned>
+
+### Deploy EFS CSI Driver
+        ./deploy.sh --action <deploy_csi> --region <region> --cluster-name <cluster-name>
 
