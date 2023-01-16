@@ -64,9 +64,7 @@ function _create_efs {
         echo "${bold}+++++++++Use below information to deploy helm chart+++++++++${normal}"
         FS_IP=$(terraform output mount_target_ips)
         FS_ID=$(terraform output filesystem-id)
-        echo "${bold}1) File System ID ====> ${green}${underline}$FS_ID${normal}"
-        echo "${bold}2) File System IP ====> ${green}${underline}$FS_IP${normal}"
-        echo "${bold}3) Region         ====> ${green}${underline}$REGION${normal}"
+        echo "${bold}File System ID ====> ${green}${underline}$FS_ID${normal}"
     fi
 }
 
@@ -134,9 +132,9 @@ function _usage {
 }
 
 _parse_args() {
+    THROUGHPUT=0
     if [ $# != 0 ]; then
         while true ; do
-        echo "OP: $1 $2"
         case "$1" in
             --help)
                 _usage

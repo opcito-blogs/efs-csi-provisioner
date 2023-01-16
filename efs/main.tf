@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_efs_file_system" "efs" {
   creation_token = var.efs_name
   performance_mode                  = var.performance_mode
-  provisioned_throughput_in_mibps   = "${var.throughput_mode == provisioned ? var.throughput : 0}"
+  provisioned_throughput_in_mibps   = "${var.throughput_mode == "provisioned" ? var.throughput : 0}"
   throughput_mode                   = var.throughput_mode
 
 }
